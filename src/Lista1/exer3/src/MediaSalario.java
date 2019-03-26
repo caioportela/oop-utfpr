@@ -7,17 +7,16 @@ public class MediaSalario {
 
     System.out.print("Insira a quantidade de funcionários: ");
     int emp = read.nextInt();
+    float media = 0;
 
-    
-    // System.out.print("Insira o comprimento da caixa: ");
-    // float length = read.nextInt();
-    //
-    // System.out.print("Insira a largura da caixa: ");
-    // float width = read.nextInt();
-    //
-    // float volume = height * length * width;
-    //
-    // System.out.println("O volume da caixa é: " + volume);
+    for(int i = 0; i < emp; i++) {
+      System.out.print("Insira o salário do funcionário: ");
+      float a = read.nextFloat();
+      media += a;
+    }
+    media /= emp;
+
+    System.out.println("A média de salário é R$" + media);
     read.close();
   }
 }
