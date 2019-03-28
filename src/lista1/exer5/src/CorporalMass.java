@@ -30,8 +30,10 @@ public class CorporalMass {
     else
       message = "Muito Obeso";
 
-    String dialog = "Altura = " + height + "\nPeso = " + weight + "\nIMC = " + String.format("%.2f",imc) + "\nConsiderado: " + message;
-    JOptionPane.showMessageDialog(null, dialog);
+    JOptionPane.showMessageDialog(null, "Altura = " + height +
+                                  "\nPeso = " + weight +
+                                  "\nIMC = " + String.format("%.2f",imc)
+                                  + "\nConsiderado: " + message);
   }
 
   public static float convert(String message) {
