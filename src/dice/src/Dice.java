@@ -6,6 +6,6 @@ public class Dice {
   }
 
   public void rollDice() {
-    this.sideUp = (int)(Math.random() * 50 + 1);
+    this.sideUp = (int)(Math.random() * 6 + 1);
   }
 }
