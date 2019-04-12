@@ -2,7 +2,10 @@ public class Complex {
   private float real;
   private float complex;
 
-  public Complex() {}
+  public Complex() {
+    real = 0;
+    complex = 0;
+  }
 
   public Complex(float a, float b) {
     real = a;
@@ -15,7 +18,7 @@ public class Complex {
   }
 
   public void print() {
-    System.out.println(this.real + ' + ' + this.complex + 'i');
+    System.out.println(this.real + " + " + this.complex + "i");
   }
 
   public boolean isEqual(Complex y) {
@@ -33,16 +36,16 @@ public class Complex {
   }
 
   public void multiply(Complex y) {
-    a = this.real; b = this.complex;
-    c = y.real; d = y.complex;
+    float a = this.real, b = this.complex;
+    float c = y.real, d = y.complex;
 
     this.real = (a*c) - (b*d);
     this.complex = (a*d) + (b*c);
   }
 
   public void divide(Complex y) {
-    a = this.real; b = this.complex;
-    c = y.real; d = y.complex;
+    float a = this.real, b = this.complex;
+    float c = y.real, d = y.complex;
 
     this.real = ((a*c) + (b*d))/((c*c) + (d*d));
     this.complex = ((b*c)-(a*d))/((c*c) + (d*d));
