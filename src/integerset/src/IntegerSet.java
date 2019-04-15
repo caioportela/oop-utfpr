@@ -7,33 +7,44 @@ public class IntegerSet {
       x = false;
   }
 
-  public boolean getElement(int index) {
-    return this.set[index];
+  public void insertElement(int index) {
+    set[index] = true;
   }
 
-  public void setElement(int index, boolean value) {
-    set[index] = value;
+  public void deleteElement(int index) {
+    set[index] = false;
   }
 
   public String toString() {
-    for(int i = 0; i < 100; i++) {
+    String output = "";
+    for(int i = 0; i < 100; i++)
+      if(this.set[i])
+        output += i + " ";
 
-    }
+    if(output != "")
+      return output;
+    else
+      return "--";
   }
 
   public IntegerSet union(IntegerSet b) {
     IntegerSet unionSet = new IntegerSet();
-
-    for(int i = 0; i < 100; i++) {
-      unionSet[i] = this.set[i] || b.set[i];
-    }
-
+    for(int i = 0; i < 100; i++)
+      unionSet.set[i] = this.set[i] || b.set[i];
     return unionSet;
   }
 
-  // public IntegerSet instersection(IntegerSet b) {
-  //
-  // }
+  public IntegerSet instersection(IntegerSet b) {
+    IntegerSet interSet = new IntegerSet();
+    for(int i = 0; i < 100; i++)
+      interSet.set[i] = this.set[i] && b.set[i];
+    return interSet;
+  }
 
-
+  public boolean isEqualTo(IntegerSet b) {
+    for(int i = 0; i < 100; i++)
+      if(this.set[i] != b.set[i])
+        return false;
+    return true;
+  }
 }
