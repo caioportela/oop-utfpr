@@ -1,3 +1,5 @@
+import java.text.NumberFormat;
+
 public class Rational {
   private int nominator;
   private int denominator;
@@ -20,13 +22,17 @@ public class Rational {
   }
 
   public void sum(Rational b) {
-    if(this.denominator == b.denominator) {
-      this.nominator += b.nominator;
-      return;
-    }
-
     int lcm = lcm(this.denominator, b.denominator),
     x = ((this.nominator) * (lcm / this.denominator)) + ((b.nominator) * (lcm / b.denominator));
+
+    int gcd = gcd(x, lcm);
+    this.nominator = x / gcd;
+    this.denominator = lcm / gcd;
+  }
+
+  public void subtract(Rational b) {
+    int lcm = lcm(this.denominator, b.denominator),
+    x = ((this.nominator) * (lcm / this.denominator)) - ((b.nominator) * (lcm / b.denominator));
 
     int gcd = gcd(x, lcm);
     this.nominator = x / gcd;
@@ -42,6 +48,14 @@ public class Rational {
     this.denominator /= gcd;
   }
 
+  public void divide(Rational b) {
+    int aux = b.nominator;
+    b.nominator = b.denominator;
+    b.denominator = aux;
+
+    this.multiply(b);
+  }
+
   public void printRational() {
     if(this.nominator == 0 || this.denominator == 1) {
       System.out.println(this.nominator);
@@ -50,13 +64,17 @@ public class Rational {
     System.out.println(this.nominator + "/" + this.denominator);
   }
 
+  public void printFloat(int decimals) {
+    double a = this.nominator, b = this. denominator;
+    NumberFormat nf = NumberFormat.getInstance();
+    nf.setMaximumFractionDigits(decimals);
+    System.out.println(nf.format(a/b));
+  }
+
   private int gcd(int a, int b) {
-    if(a == 0)
-      return a;
-    if(b == 0)
-      return b;
-    if(a == b )
-      return a;
+    if(a == 0) return a;
+    if(b == 0) return b;
+    if(a == b) return a;
 
     if(a > b)
       return gcd(a-b, b);
