@@ -43,6 +43,11 @@ public class Rational {
     this.nominator *= b.nominator;
     this.denominator *= b.denominator;
 
+    if(this.denominator < 0) {
+      this.nominator *= (-1);
+      this.denominator *= (-1);
+    }
+
     int gcd = gcd(this.nominator, this.denominator);
     this.nominator /= gcd;
     this.denominator /= gcd;
@@ -77,8 +82,8 @@ public class Rational {
     if(a == b) return a;
 
     if(a > b)
-      return gcd(a-b, b);
-    return gcd(a, b-a);
+      return gcd(a-b, Math.abs(b));
+    return gcd(Math.abs(a), b-a);
   }
 
   private int lcm(int a, int b) {
